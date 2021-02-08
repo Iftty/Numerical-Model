@@ -1,0 +1,77 @@
+
+Public Sub Zhu()
+    Dim white, green, blue, purple, orange, rand, times
+    Dim noPurple, noOrange, purpleScore, orangeScore
+    white = 0
+    green = 0
+    blue = 0
+    purple = 0
+    orange = 0
+    times = 100000000
+    
+    purpleScore = 0
+    orangeScore = 0
+    noPurple = 0
+    noOrange = 0
+    For i = 0 To times
+         rand = Int(Rnd() * 100)
+         If rand >= 97 Then
+
+            orange = orange + 1
+            noPurple = noPurple + 1
+
+         ElseIf rand >= 80 Then
+
+            purple = purple + 1
+            noOrange = noOrange + 1
+
+         ElseIf rand >= 45 Then
+
+            blue = blue + 1
+            noPurple = noPurple + 1
+            noOrange = noOrange + 1
+
+         ElseIf rand >= 5 Then
+         
+            green = green + 1
+            noPurple = noPurple + 1
+            noOrange = noOrange + 1
+           
+         Else
+            
+            white = white + 1
+            noPurple = noPurple + 1
+            noOrange = noOrange + 1
+            
+         End If
+         
+         If noPurple = 5 Then
+            purpleScore = purpleScore + 10
+            noPurple = 0
+         End If
+         
+         If noOrange = 10 Then
+            orangeScore = orangeScore + 10
+            noOrange = 0
+         End If
+         
+         If purpleScore = 100 Then
+            purple = purple + 1
+            i = i + 1
+            purpleScore = 0
+         End If
+         
+          If orangeScore = 100 Then
+            orange = orange + 1
+            i = i + 1
+            orangeScore = 0
+         End If
+         
+    Next i
+    orange = orange / times
+    purple = purple / times
+    blue = blue / times
+    green = green / times
+    white = white / times
+    t = MsgBox("white:" & white & vbCrLf & "green:" & green & vbCrLf & "blue:" & blue & vbCrLf & "purple:" & purple & vbCrLf & "orange:" & orange)
+End Sub
